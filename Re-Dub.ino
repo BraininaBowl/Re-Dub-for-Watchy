@@ -1,6 +1,6 @@
 #include <Watchy.h> //include the Watchy library
 #include "background.h"
-#include <Technology48pt7b.h>
+#include <Technology40pt7b.h>
 #include <Technology18pt7b.h>
         
 
@@ -16,11 +16,21 @@ class WatchFace : public Watchy { //inherit and extend Watchy class
       display.fillScreen(GxEPD_BLACK);
       display.drawBitmap(0, 0, background, 200, 200, GxEPD_WHITE);
       
-      display.setFont(&Technology48pt7b);
       display.setTextColor(GxEPD_BLACK);
       display.setTextWrap(false);
 
+      //draw date
+      display.setFont(&Technology18pt7b);
+      textstring = dayShortStr(currentTime.Wday);
+      textstring.toUpperCase();
+      textstring += " ";
+      textstring += currentTime.Day;
+      display.getTextBounds(textstring, 0, 0, &x1, &y1, &w, &h);
+      display.setCursor(175-w, 90);
+      display.print(textstring);
+
       //draw time
+      display.setFont(&Technology40pt7b);
       textstring = currentTime.Hour;
       if (currentTime.Minute < 10) {
         textstring += ":0";
