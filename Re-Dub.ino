@@ -1,7 +1,7 @@
 #include <Watchy.h> //include the Watchy library
 #include "background.h"
-#include <Technology40pt7b.h>
-#include <Technology18pt7b.h>
+#include "Technology40pt7b.h"
+#include "Technology18pt7b.h"
         
 
 class WatchFace : public Watchy { //inherit and extend Watchy class
